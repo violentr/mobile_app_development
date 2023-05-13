@@ -4,18 +4,35 @@ import { StyleSheet, Text, View, StatusBar } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { LinearGradient } from 'expo-linear-gradient';
 
-
+const weatherOptions = {
+    Rain: {
+        iconName: 'rainy',
+        gradient: ["#0F2027", "#203A43"]
+    },
+    Snow: {
+        iconName: 'cloud-snow',
+        gradient: ["#2980B9", "#6DD5FA"]
+    },
+    Clear: {
+        iconName: 'cloud',
+        gradient: ["#2193b0", "#6dd5ed"]
+    },
+    Drizzle: {
+        iconName: 'cloud-drizzle',
+        gradient: ["#2193b0", "#6dd5ed"]
+    }
+}
 export default function Weather({temp, condition}){
     return (
 
         <LinearGradient
-        colors={['rgba(0,0,0,0.8)', 'transparent']}
+        colors={weatherOptions[condition].gradient}
         style={styles.container}>
             <StatusBar barStyle="light-content"/>
             <View style={styles.halfContainer}>
-            <Ionicons name="rainy" size={80} color="white"/>
-            <Text style={styles.temp}>{temp}°</Text>
-            <Text style={styles.clear}>{condition}</Text>
+                <Ionicons name={weatherOptions[condition].iconName} size={80} color="white"/>
+                <Text style={styles.temp}>{temp}°</Text>
+                <Text style={styles.clear}>{condition}</Text>
             </View>
             <View style={styles.halfContainer}></View>
         </LinearGradient>
