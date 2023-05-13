@@ -11,10 +11,10 @@ export default class extends React.Component{
     try {
       const response = await Location.requestBackgroundPermissionsAsync();
       console.log(response);
-      let options = {}
-      await Location.getCurrentPositionAsync(options);
-      console.log(location)
+      let location = await Location.getCurrentPositionAsync();
+      console.log(`Location: ${JSON.stringify(location)}`)
     }catch (error) {
+      console.log(error)
       Alert.alert("Can't get weather data for now .. ")
     }
 
