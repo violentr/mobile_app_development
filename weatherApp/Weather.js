@@ -1,21 +1,24 @@
 import React from 'react';
 import propTypes from 'prop-types';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, StatusBar } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
+import { LinearGradient } from 'expo-linear-gradient';
 
 
 export default function Weather({temp, condition}){
     return (
-        <View style={styles.container}>
-            <View style={styles.halfContainer}>
-                <Ionicons name="rainy" size={80} color="black"/>
-                <Text style={styles.temp}>Temperature: {temp}°</Text>
-                <Text style={styles.clear}>Condition: {condition}</Text>
-            </View>
-            <View style={styles.halfContainer}>
 
+        <LinearGradient
+        colors={['rgba(0,0,0,0.8)', 'transparent']}
+        style={styles.container}>
+            <StatusBar barStyle="light-content"/>
+            <View style={styles.halfContainer}>
+            <Ionicons name="rainy" size={80} color="white"/>
+            <Text style={styles.temp}>{temp}°</Text>
+            <Text style={styles.clear}>{condition}</Text>
             </View>
-        </View>
+            <View style={styles.halfContainer}></View>
+        </LinearGradient>
     );
 }
 
@@ -38,9 +41,11 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     }, temp: {
         fontSize: 26,
+        color: "white"
 
     }, clear: {
         fontSize: 26,
+        color: "white"
 
     }
 })
